@@ -30,12 +30,8 @@ public class RealLibrarian implements Librarian {
     }
 
     @Override
-    public void writeInCard(Book book) {
-        book.setBookInsert(new BookInsert.BookInsertBuilder()
-                .setDate("01/01/2023")
-                .setDeadline("01/02/2023")
-                .setTicketNumber("123-GH")
-                .build());
+    public void writeInCard(Book book, BookInsert bookInsert) {
+        book.setBookInsert(bookInsert);
     }
 
     @Override
@@ -49,7 +45,8 @@ public class RealLibrarian implements Librarian {
     }
 
     @Override
-    public void issueFine() {
-        System.out.println("Выписать штраф");
+    public int issueFine(boolean isLost) {
+        if (isLost) return 1000;
+        else return 200;
     }
 }

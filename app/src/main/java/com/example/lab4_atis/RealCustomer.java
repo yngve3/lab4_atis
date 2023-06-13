@@ -10,6 +10,7 @@ public class RealCustomer implements Customer {
     private String ticketNumber;
     private List<Book> books;
     private Library library;
+    private int fineCount;
 
     public RealCustomer(String name, String ticketNumber, Library library) {
         this.name = name;
@@ -47,6 +48,20 @@ public class RealCustomer implements Customer {
 
     @Override
     public void payFine() {
-        System.out.println("Оплатить штраф");
+        fineCount = 0;
+    }
+
+    public int getFineCount() {
+        return fineCount;
+    }
+
+    @Override
+    public void addFineToCount(int fineCount) {
+        this.fineCount += fineCount;
+    }
+
+    @Override
+    public int getFine() {
+        return fineCount;
     }
 }

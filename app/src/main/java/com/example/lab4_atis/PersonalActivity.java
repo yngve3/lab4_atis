@@ -2,6 +2,8 @@ package com.example.lab4_atis;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +29,21 @@ public class PersonalActivity extends AppCompatActivity implements BookListAdapt
 
         TextView ticketNumber = findViewById(R.id.tvTicketNumberPersonal);
         TextView fine = findViewById(R.id.tvFine);
+        Button payFine = findViewById(R.id.btnPayFine);
         RecyclerView booksList = findViewById(R.id.booksListPersonal);
 
         ticketNumber.setText("Номер читательского билета: " + App.getInstance().getPeople().getTicketNumber());
+        fine.setText("Общий размер шрафа: " + App.getInstance().getPeople().getFine());
+
+        if (App.getInstance().getPeople().getFine() > 0) {
+            payFine.setVisibility(View.VISIBLE);
+        }
+
+        payFine.setOnClickListener(view -> {
+            App.getInstance().getPeople().payFine();
+            fine.setText("Общий размер шрафа: " + App.getInstance().getPeople().getFine());
+            payFine.setVisibility(View.GONE);
+        });
 
         adapter = new BookListAdapter(App.getInstance().getPeople().getCustomerBookList(),true, this);
 

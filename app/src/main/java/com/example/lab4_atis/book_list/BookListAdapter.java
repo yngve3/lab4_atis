@@ -1,6 +1,7 @@
 package com.example.lab4_atis.book_list;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
+import com.example.lab4_atis.Date;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.models.Book;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.List;
 
@@ -62,8 +65,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         private final TextView bookName;
         private final TextView bookAuthor;
         private final TextView bookCount;
-        private final TextView lostBook;
+        private final SwitchMaterial lostBook;
         private final Button takeBook;
+        private final TextView tvLostBook;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,8 +75,9 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
             bookName = itemView.findViewById(R.id.tvNameBook);
             bookAuthor = itemView.findViewById(R.id.tvAuthorBook);
             bookCount = itemView.findViewById(R.id.tvCountBook);
-            lostBook = itemView.findViewById(R.id.tvLostBook);
+            lostBook = itemView.findViewById(R.id.btnLostBook);
             takeBook = itemView.findViewById(R.id.btnGiveBook);
+            tvLostBook = itemView.findViewById(R.id.tvLost);
         }
 
         @SuppressLint("SetTextI18n")
@@ -82,20 +87,36 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
 
             if (isPersonal) {
                 takeBook.setVisibility(View.VISIBLE);
-                takeBook.setOnClickListener(view -> listener.onItemClick(book));
                 takeBook.setText("Отдать");
                 bookCount.setText("Дата выдачи: " + book.getBookInsert().getDate()
                         + "\nДедлайн: " + book.getBookInsert().getDeadline()
                 );
+
                 lostBook.setVisibility(View.VISIBLE);
+                lostBook.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    book.getBookInsert().setLost(isChecked);
+                });
+
+                takeBook.setOnClickListener(view -> {
+                    takeBook.setVisibility(View.GONE);
+                    lostBook.setVisibility(View.GONE);
+                    tvLostBook.setVisibility(View.VISIBLE);
+                    tvLostBook.setText("Запрос в обработке");
+                    listener.onItemClick(book);
+                });
             } else {
                 if (App.getInstance().isWorker()) {
-                    bookCount.setText("Дата выдачи: " + book.getBookInsert().getDate()
-                            + "\nДедлайн: " + book.getBookInsert().getDeadline()
-                    );
+
+                    if (Date.isAfterDeadline()) {
+                        bookCount.setText("ПОСЛЕ ДЕДЛАЙНА");
+                        bookCount.setTextColor(Color.parseColor("#6750a4"));
+                    } else {
+                        bookCount.setVisibility(View.GONE);
+                    }
+
 
                     if (book.getBookInsert().isLost()) {
-                        lostBook.setVisibility(View.VISIBLE);
+                        tvLostBook.setVisibility(View.VISIBLE);
                     }
 
                 } else {

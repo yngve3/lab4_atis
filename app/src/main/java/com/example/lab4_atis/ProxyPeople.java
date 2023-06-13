@@ -1,6 +1,7 @@
 package com.example.lab4_atis;
 
 import com.example.lab4_atis.models.Book;
+import com.example.lab4_atis.models.BookInsert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +87,8 @@ public class ProxyPeople implements Observer, Customer, Librarian {
     }
 
     @Override
-    public void writeInCard(Book book) {
-        if (librarian != null && authorization) librarian.writeInCard(book);
+    public void writeInCard(Book book, BookInsert bookInsert) {
+        if (librarian != null && authorization) librarian.writeInCard(book, bookInsert);
         else System.out.println("Авторизуйтесь как библиотекарь");
     }
 
@@ -111,14 +112,28 @@ public class ProxyPeople implements Observer, Customer, Librarian {
     }
 
     @Override
-    public void issueFine() {
-        if (librarian != null && authorization) librarian.issueFine();
+    public int issueFine(boolean isLost) {
+        if (librarian != null && authorization) return librarian.issueFine(isLost);
         else System.out.println("Авторизуйтесь как библиотекарь");
+        return -1;
     }
 
     @Override
     public void payFine() {
         if (customer != null && authorization) customer.payFine();
         else System.out.println("Авторизуйтесь как пользователь");
+    }
+
+    @Override
+    public void addFineToCount(int fineCount) {
+        if (customer != null && authorization) customer.addFineToCount(fineCount);
+        else System.out.println("Авторизуйтесь как пользователь");
+    }
+
+    @Override
+    public int getFine() {
+        if (customer != null && authorization) return customer.getFineCount();
+        else System.out.println("Авторизуйтесь как пользователь");
+        return -1;
     }
 }

@@ -14,4 +14,8 @@ public interface Customer {
     Book returnBook(Book book);
 
     void payFine();
+
+    void addFineToCount(int fineCount);
+
+    int getFine();
 }

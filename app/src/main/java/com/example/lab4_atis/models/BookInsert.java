@@ -35,6 +35,10 @@ public class BookInsert implements Serializable {
         return isLost;
     }
 
+    public void setLost(boolean lost) {
+        isLost = lost;
+    }
+
     @Override
     public String toString() {
         return "{" + date + " " + deadline + " " + ticketNumber + "}";

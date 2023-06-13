@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
+import com.example.lab4_atis.Date;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.models.Book;
+import com.example.lab4_atis.models.BookInsert;
 import com.example.lab4_atis.models.Request;
 
 import java.util.ArrayList;
@@ -56,9 +58,28 @@ public class BookListActivity extends AppCompatActivity {
             btnOk.setOnClickListener((view -> {
                 if (request.isReturn()) {
                     App.getInstance().getPeople().returnBook(request.getBook());
-                    request.getBook().getBookCard().inc();
+                    if (!request.getBook().getBookInsert().isLost()) {
+                        request.getBook().getBookCard().inc();
+                    } else {
+                        int fine = App.getInstance().getPeople().issueFine(true);
+                        App.getInstance().getPeople().addFineToCount(fine);
+                    }
+
+                    if (Date.isAfterDeadline()) {
+                        int fine = App.getInstance().getPeople().issueFine(false);
+                        App.getInstance().getPeople().addFineToCount(fine);
+                    }
+
                     Toast.makeText(this, "Книга возвращена в библиотеку", Toast.LENGTH_SHORT).show();
                 } else {
+                    BookInsert bookInsert = new BookInsert.BookInsertBuilder()
+                            .setDate(Date.NOW_DATE)
+                            .setDeadline(Date.DEAD_LINE_DATE)
+                            .setLost(false)
+                            .setTicketNumber(App.getInstance().getPeople().getTicketNumber())
+                            .build();
+
+                    request.getBook().setBookInsert(bookInsert);
                     App.getInstance().getPeople().getBookFromLibrary(request.getBook());
                     request.getBook().getBookCard().dec();
                     Toast.makeText(this, "Книга отдана клиенту", Toast.LENGTH_SHORT).show();

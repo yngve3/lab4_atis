@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="20dp"
@@ -49,8 +50,8 @@
         app:layout_constrainedWidth="true"
         android:textSize="17sp"/>
 
-    <TextView
-        android:id="@+id/tvLostBook"
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/btnLostBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Утеряна"
@@ -62,13 +63,31 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constrainedWidth="true"
         android:textSize="17sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvLost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Утеряна"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvCountBook"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constrainedWidth="true"
+        android:textSize="17sp"
+        android:textColor="#6750a4"
+        android:textStyle="bold"
+        android:textAllCaps="true"
         android:visibility="gone"/>
 
     <Button
         android:id="@+id/btnGiveBook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvLostBook"
+        app:layout_constraintTop_toBottomOf="@id/btnLostBook"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
