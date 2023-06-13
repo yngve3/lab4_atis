@@ -1,4 +1,4 @@
-package com.example.lab4_atis;
+package com.example.lab4_atis.activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lab4_atis.App;
+import com.example.lab4_atis.R;
 import com.example.lab4_atis.book_list.BookListAdapter;
 import com.example.lab4_atis.models.Book;
 import com.example.lab4_atis.models.Request;

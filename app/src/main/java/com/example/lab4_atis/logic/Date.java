@@ -1,4 +1,4 @@
-package com.example.lab4_atis;
+package com.example.lab4_atis.logic;
 
 public class Date {
     public static final String NOW_DATE = "14/06/2023";

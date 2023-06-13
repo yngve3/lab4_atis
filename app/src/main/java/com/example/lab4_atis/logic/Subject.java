@@ -1,4 +1,4 @@
-package com.example.lab4_atis;
+package com.example.lab4_atis.logic;
 
 public interface Subject {
     void attachObserver(Observer observer);

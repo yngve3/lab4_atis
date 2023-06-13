@@ -1,6 +1,6 @@
 package com.example.lab4_atis.models;
 
-import com.example.lab4_atis.Departments;
+import com.example.lab4_atis.logic.Departments;
 
 import java.io.Serializable;
 

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
-import com.example.lab4_atis.Departments;
+import com.example.lab4_atis.logic.Departments;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.models.Request;
 

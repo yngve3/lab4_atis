@@ -1,7 +1,6 @@
 package com.example.lab4_atis.book_list;
 
 import android.annotation.SuppressLint;
-import android.app.DownloadManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,16 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
-import com.example.lab4_atis.Date;
-import com.example.lab4_atis.Departments;
+import com.example.lab4_atis.logic.Date;
+import com.example.lab4_atis.logic.Departments;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.models.Book;
 import com.example.lab4_atis.models.BookInsert;
 import com.example.lab4_atis.models.Request;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

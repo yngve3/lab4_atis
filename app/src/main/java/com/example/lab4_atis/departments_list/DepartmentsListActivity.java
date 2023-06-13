@@ -3,7 +3,6 @@ package com.example.lab4_atis.departments_list;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
-import com.example.lab4_atis.Departments;
-import com.example.lab4_atis.PersonalActivity;
+import com.example.lab4_atis.logic.Departments;
+import com.example.lab4_atis.activities.PersonalActivity;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.book_list.BookListActivity;
 import com.example.lab4_atis.models.Request;

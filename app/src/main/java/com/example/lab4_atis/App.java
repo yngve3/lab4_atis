@@ -2,9 +2,9 @@ package com.example.lab4_atis;
 
 import android.app.Application;
 
-import com.example.lab4_atis.models.Book;
-import com.example.lab4_atis.models.BookCard;
-import com.example.lab4_atis.models.BookInsert;
+import com.example.lab4_atis.logic.FillData;
+import com.example.lab4_atis.logic.Library;
+import com.example.lab4_atis.logic.ProxyPeople;
 import com.example.lab4_atis.models.Request;
 
 import java.util.ArrayList;

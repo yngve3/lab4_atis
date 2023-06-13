@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
-import com.example.lab4_atis.Date;
+import com.example.lab4_atis.logic.Date;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.models.Book;
 import com.google.android.material.switchmaterial.SwitchMaterial;

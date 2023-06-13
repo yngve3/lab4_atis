@@ -1,4 +1,4 @@
-package com.example.lab4_atis;
+package com.example.lab4_atis.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.lab4_atis.App;
+import com.example.lab4_atis.R;
 import com.example.lab4_atis.departments_list.DepartmentsListActivity;
 
 public class LoginActivity extends AppCompatActivity {

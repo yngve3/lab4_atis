@@ -1,4 +1,4 @@
-package com.example.lab4_atis;
+package com.example.lab4_atis.logic;
 
 
 import com.example.lab4_atis.models.Book;
