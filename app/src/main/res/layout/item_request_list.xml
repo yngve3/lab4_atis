@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:paddingTop="20dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/tvKindRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constrainedWidth="true"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvNameBookRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvKindRequest"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constrainedWidth="true"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/tvAuthorBookRequest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvNameBookRequest"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constrainedWidth="true"
+        android:textSize="17sp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
