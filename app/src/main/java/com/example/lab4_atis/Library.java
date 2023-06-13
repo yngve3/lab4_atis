@@ -5,6 +5,8 @@ import com.example.lab4_atis.models.Book;
 import com.example.lab4_atis.models.BookCard;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Library implements Subject {
     private ArrayList<Book> books = new ArrayList<>();
@@ -12,6 +14,9 @@ public class Library implements Subject {
 
     public ArrayList<Book> getBooks() {
         return books;
+    }
+    public List<Book> getBooks(Departments department) {
+        return books.stream().filter(book -> book.getBookCard().getLibraryDepartment() == department).collect(Collectors.toList());
     }
 
     public Book findBook(String author, String name){

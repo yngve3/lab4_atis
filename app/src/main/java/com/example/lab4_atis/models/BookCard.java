@@ -1,5 +1,7 @@
 package com.example.lab4_atis.models;
 
+import com.example.lab4_atis.Departments;
+
 import java.io.Serializable;
 
 /**
@@ -9,7 +11,7 @@ import java.io.Serializable;
  */
 public class BookCard implements Serializable {
     private String name; // Выходные данные
-    private String libraryDepartment; // Отдел библиотеки
+    private Departments libraryDepartment; // Отдел библиотеки
     private String bookShelf; // Полка на которой находится книга
     private int count;  // Количество экземпляров книги
     public void inc() {
@@ -31,7 +33,7 @@ public class BookCard implements Serializable {
         return name;
     }
 
-    public String getLibraryDepartment() {
+    public Departments getLibraryDepartment() {
         return libraryDepartment;
     }
 
@@ -50,7 +52,7 @@ public class BookCard implements Serializable {
 
     public static class BookCardBuilder implements Serializable{
         private String name; // Выходные данные
-        private String libraryDepartment; // Отдел библиотеки
+        private Departments libraryDepartment; // Отдел библиотеки
         private String bookShelf; // Полка на которой находится книга
         private int count;  // Количество экземпляров книги
 
@@ -59,7 +61,7 @@ public class BookCard implements Serializable {
             return this;
         }
 
-        public BookCardBuilder setLibraryDepartment(String libraryDepartment) {
+        public BookCardBuilder setLibraryDepartment(Departments libraryDepartment) {
             this.libraryDepartment = libraryDepartment;
             return this;
         }

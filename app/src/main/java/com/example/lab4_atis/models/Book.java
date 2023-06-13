@@ -9,7 +9,11 @@ public class Book implements Serializable {
     public Book(BookInsert bookInsert, BookCard bookCard) {
         this.bookInsert = bookInsert;
         this.bookCard = bookCard;
+    }
 
+    public Book(BookCard bookCard) {
+        this.bookCard = bookCard;
+        this.bookInsert = null;
     }
 
     public BookInsert getBookInsert() {

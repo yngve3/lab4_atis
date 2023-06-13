@@ -13,13 +13,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
+import com.example.lab4_atis.Departments;
 import com.example.lab4_atis.PersonalActivity;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.book_list.BookListActivity;
 import com.example.lab4_atis.models.Request;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DepartmentsListActivity extends AppCompatActivity {
 
@@ -56,18 +59,15 @@ public class DepartmentsListActivity extends AppCompatActivity {
         if (App.getInstance().isWorker()) {
             items.addAll(App.getInstance().getRequests());
         } else {
-            items.add("Классика");
-            items.add("Фантастика");
-            items.add("BTS");
+            items.addAll(Arrays.stream(Departments.values()).collect(Collectors.toList()));
         }
 
         DepartmentsListAdapter adapter = new DepartmentsListAdapter(items, item -> {
             Intent intent = new Intent(this, BookListActivity.class);
             if (App.getInstance().isWorker()) {
-                intent.putExtra("departmentName", "Книги");
                 intent.putExtra(Request.class.getSimpleName(), App.getInstance().getRequests().indexOf(item));
             } else {
-                intent.putExtra("departmentName", (String) item);
+                intent.putExtra("departmentName", (Departments) item);
             }
 
             startActivity(intent);

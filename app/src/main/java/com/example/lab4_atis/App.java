@@ -40,7 +40,7 @@ public class App extends Application {
         instance = this;
 
         library.attachObserver(people);
-        fillData();
+        FillData.fill(library);
 
         requests = new ArrayList<>();
     }
@@ -55,68 +55,5 @@ public class App extends Application {
 
     public boolean isWorker() {
         return isWorker;
-    }
-
-    private void fillData() {
-        BookInsert insert = new BookInsert.BookInsertBuilder()
-                .setDate("12/06/2023")
-                .setDeadline("15/06/2023")
-                .setTicketNumber("123-GH")
-                .build();
-
-        BookCard card = new BookCard.BookCardBuilder()
-                .setName("Детство")
-                .setBookShelf("Толстой Л.Н.")
-                .setCount(32)
-                .setLibraryDepartment("Художественный")
-                .build();
-
-        library.addBook(new Book(insert, card));
-
-        insert = new BookInsert.BookInsertBuilder()
-                .setDate("12/06/2023")
-                .setDeadline("15/06/2023")
-                .setTicketNumber("123-GH")
-                .build();
-
-        card = new BookCard.BookCardBuilder()
-                .setName("Отрочество")
-                .setBookShelf("Толстой Л.Н.")
-                .setCount(34)
-                .setLibraryDepartment("Художественный")
-                .build();
-
-        library.addBook(new Book(insert, card));
-
-        insert = new BookInsert.BookInsertBuilder()
-                .setDate("12/06/2023")
-                .setDeadline("15/06/2023")
-                .setTicketNumber("123-GH")
-                .build();
-
-        card = new BookCard.BookCardBuilder()
-                .setName("Юность")
-                .setBookShelf("Толстой Л.Н.")
-                .setCount(25)
-                .setLibraryDepartment("Художественный")
-                .build();
-
-        library.addBook(new Book(insert, card));
-
-        insert = new BookInsert.BookInsertBuilder()
-                .setDate("12/06/2023")
-                .setDeadline("15/06/2023")
-                .setTicketNumber("123-GH")
-                .build();
-
-        card = new BookCard.BookCardBuilder()
-                .setName("Война и мир")
-                .setBookShelf("Толстой Л.Н.")
-                .setCount(1)
-                .setLibraryDepartment("Художественный")
-                .build();
-
-        library.addBook(new Book(insert, card));
-
     }
 }

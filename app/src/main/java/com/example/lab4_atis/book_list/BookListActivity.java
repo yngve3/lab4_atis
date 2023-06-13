@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
 import com.example.lab4_atis.Date;
+import com.example.lab4_atis.Departments;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.models.Book;
 import com.example.lab4_atis.models.BookInsert;
@@ -42,7 +43,13 @@ public class BookListActivity extends AppCompatActivity {
         List<Book> books = new ArrayList<>();
 
         TextView label = findViewById(R.id.booksListLabel);
-        label.setText(getIntent().getStringExtra("departmentName"));
+        Departments department = (Departments) getIntent().getSerializableExtra("departmentName");
+
+        if (department == null) {
+            label.setText("Книги");
+        } else {
+            label.setText(department.getName());
+        }
 
         RecyclerView booksList = findViewById(R.id.booksList);
 
@@ -96,7 +103,12 @@ public class BookListActivity extends AppCompatActivity {
                 kindRequest.setText("Запрос на отдачу книги");
             }
         } else {
-            books.addAll(App.getInstance().getPeople().viewBooks().stream().filter((book -> book.getBookCard().getCount() > 0)).collect(Collectors.toList()));
+            books.addAll(
+                    App.getInstance().getPeople().viewBooks().stream()
+                            .filter((book -> book.getBookCard().getCount() > 0))
+                            .filter(book -> book.getBookCard().getLibraryDepartment() == department)
+                            .collect(Collectors.toList())
+            );
         }
 
         BookListAdapter adapter = new BookListAdapter(books, false, book -> {

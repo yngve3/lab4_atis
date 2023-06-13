@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab4_atis.App;
+import com.example.lab4_atis.Departments;
 import com.example.lab4_atis.R;
 import com.example.lab4_atis.models.Request;
 
@@ -68,7 +69,7 @@ public class DepartmentsListAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         public void bind(final Object department, final OnItemClickListener listener) {
-            departmentName.setText((String)department);
+            departmentName.setText(((Departments)department).getName());
             itemView.setOnClickListener(view -> listener.onItemClick(department));
         }
     }

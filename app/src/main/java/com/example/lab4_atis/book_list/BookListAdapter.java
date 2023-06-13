@@ -106,17 +106,20 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
                 });
             } else {
                 if (App.getInstance().isWorker()) {
+                    if (book.getBookInsert() != null) {
+                        bookCount.setText("Дата выдачи: " + book.getBookInsert().getDate()
+                                + "\nДедлайн: " + book.getBookInsert().getDeadline());
+                        if (Date.isAfterDeadline()) {
+                            bookCount.setTextColor(Color.parseColor("#6750a4"));
+                        } else {
+                            bookCount.setVisibility(View.GONE);
+                        }
 
-                    if (Date.isAfterDeadline()) {
-                        bookCount.setText("ПОСЛЕ ДЕДЛАЙНА");
-                        bookCount.setTextColor(Color.parseColor("#6750a4"));
+                        if (book.getBookInsert().isLost()) {
+                            tvLostBook.setVisibility(View.VISIBLE);
+                        }
                     } else {
                         bookCount.setVisibility(View.GONE);
-                    }
-
-
-                    if (book.getBookInsert().isLost()) {
-                        tvLostBook.setVisibility(View.VISIBLE);
                     }
 
                 } else {
